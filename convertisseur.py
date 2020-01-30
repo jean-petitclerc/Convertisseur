@@ -1,4 +1,4 @@
-import tkinter as tk
+﻿import tkinter as tk
 import locale
 locale.setlocale(locale.LC_ALL, '')  # Use '' for auto, or force e.g. to 'en_US.UTF-8'
 
@@ -12,17 +12,17 @@ class App(tk.Tk):
         frame_entree = tk.LabelFrame(self, text="Entrée")
         frame_result = tk.LabelFrame(self, text="Résultats")
         self.ent_val = tk.Entry(frame_entree)
-        self.ent_val.pack(side=tk.TOP)
+        self.ent_val.pack(side=tk.TOP, padx=10, pady=7)
         self.unite = tk.IntVar()
         self.unite.set(1)
         btn_afficher = tk.Button(text="Afficher", command=self.afficher_resultat)
         self.lbl_status = tk.Label(text="")
         self.buttons = [self.create_radio(frame_entree, c) for c in UNITS]
         for button in self.buttons:
-            button.pack(anchor=tk.W, padx=10, pady=5)
+            button.pack(anchor=tk.W, padx=10, pady=3)
 
         self.var_virg = tk.IntVar()
-        self.chk_virg = tk.Checkbutton(frame_result, text=",", variable=self.var_virg, command=self.afficher_resultat)
+        self.chk_virg = tk.Checkbutton(frame_result, text="Mode Hai-Thuy", variable=self.var_virg, command=self.afficher_resultat)
         lbl_bytes = tk.Label(frame_result, text="Bytes:")
         lbl_kb = tk.Label(frame_result, text="Kilobytes:")
         lbl_4k = tk.Label(frame_result, text="4 KB blocks:")
@@ -65,7 +65,7 @@ class App(tk.Tk):
         #frame_result.pack(side=tk.RIGHT, padx=10, pady=10, fill=tk.BOTH)
         frame_entree.grid(row=0, column=0, padx=10, pady=10, sticky="n")
         frame_result.grid(row=0, column=1, padx=10, pady=10, sticky="n")
-        btn_afficher.grid(row=1, column=0, columnspan=2, sticky="ew")
+        btn_afficher.grid(row=1, column=0, columnspan=2, padx=10, sticky="ew")
         self.lbl_status.grid(row=2, column=0, columnspan=2, sticky="ew")
 
     def create_radio(self, parent, option):
